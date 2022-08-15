@@ -7,7 +7,7 @@ public class PlayerWeek
 
     public int TotalPoints;
 
-    public PlayerWeek(int numberOfGames, int numberOfKeyPicks)
+    public PlayerWeek(int numberOfGames, int numberOfKeyPicks, bool rankedMode)
     {
         this.TotalPoints = -1;
         this.Picks = new List<Pick>();
@@ -19,14 +19,20 @@ public class PlayerWeek
             numberOfKeyPicksSoFar++;
         }
 
+        int pickNumber = 1;
         foreach (Pick p in this.Picks)
         {
             if (!p.CorrectPick)
             {
+                pickNumber++;
                 continue;
             }
 
-            if (p.IsKeyPick)
+            if (rankedMode)
+            {
+                this.TotalPoints += pickNumber;
+            }
+            else if (p.IsKeyPick)
             {
                 this.TotalPoints += 2;
             }
@@ -34,6 +40,8 @@ public class PlayerWeek
             {
                 this.TotalPoints += 1;
             }
+
+            pickNumber++;
         }
     }
 }
