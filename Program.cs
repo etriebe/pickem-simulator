@@ -16,6 +16,7 @@ namespace pickem_simulator
             RunSimulation(16, 7, 1, true);
             RunSimulation(16, 5, 1, true);
             RunSimulation(16, 4, 1, true);
+            RunSimulation(16, 4, 2, false);
             RunSimulation(16, 3, 1, true);
             RunSimulation(16, 8, 1, false);
             RunSimulation(16, 8, 2, false);
